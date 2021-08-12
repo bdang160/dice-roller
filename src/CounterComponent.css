@@ -1,0 +1,36 @@
+.counter-component {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10rem;
+}
+.counter-component .count {
+    margin-bottom: 2rem;
+    text-align: center;
+    display: flex;
+    margin-left: 10rem;
+}
+.counter-component .count h3 {
+    line-height: 8.6rem;
+    margin-right: 1rem;
+}
+.counter-component .count h1 {
+    font-size:5em;
+    margin-top: 2rem;
+}
+.counter-component .buttons button {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: none;
+    margin: 0 2rem;
+    font-size: 5em;
+    box-shadow: 0 4px 32px 0 rgba(10,14,29,.02), 0 8px 64px 0 rgba(10,14,29,.08);
+    cursor: pointer;
+}
+.counter-component .buttons button:hover{
+    box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+}
+.counter-component .buttons button:focus{
+    outline: 0;
+}
