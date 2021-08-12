@@ -6,3 +6,8 @@
     background-color: #d6cbcb;
     text-align: left;
 }
+
+.counter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}

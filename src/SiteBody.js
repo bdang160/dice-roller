@@ -7,7 +7,15 @@ class SiteBody extends Component {
     render () {
         return (
             <div class="site-body">
-                <CounterComponent />
+                <div className="counter-grid">
+                    <CounterComponent />
+                    <CounterComponent />
+                    <CounterComponent />
+                    <CounterComponent />
+                    <CounterComponent />
+                    <CounterComponent />
+                </div>
+                
             </div>
         );
     }
