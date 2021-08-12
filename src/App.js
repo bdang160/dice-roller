@@ -7,6 +7,7 @@ function App() {
     <div className="App">
       <SiteHeader />
       <SiteBody />
+      <footer class="footer"></footer>
     </div>
   );
 }
