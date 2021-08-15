@@ -8,12 +8,12 @@ class SiteBody extends Component {
         return (
             <div class="site-body">
                 <div className="counter-grid">
-                    <CounterComponent />
-                    <CounterComponent />
-                    <CounterComponent />
-                    <CounterComponent />
-                    <CounterComponent />
-                    <CounterComponent />
+                    <CounterComponent diceText="d4"/>
+                    <CounterComponent diceText="d6"/>
+                    <CounterComponent diceText="d8"/>
+                    <CounterComponent diceText="d10"/>
+                    <CounterComponent diceText="d12"/>
+                    <CounterComponent diceText="d20"/>
                 </div>
                 
             </div>

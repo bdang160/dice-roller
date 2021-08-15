@@ -28,7 +28,7 @@ class CounterComponent extends Component {
       <div className="counter-component">
         <div>
           <div class="count">
-            <h3>Count:</h3>
+            <h3>{(this.props.diceText ? this.props.diceText : "Count")}:</h3>
             <h1>{count}</h1>
           </div>
           <div class="buttons">
