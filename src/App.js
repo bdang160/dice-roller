@@ -93,7 +93,7 @@ class App extends Component {
     return (
       <div className="App">
         <SiteHeader />
-        <DiceRollSection />
+        <DiceRollSection numD4={this.state.numD4} numD6={this.state.numD6} numD8={this.state.numD8} numD10={this.state.numD10} numD12={this.state.numD12} numD20={this.state.numD20}/>
         <div class="site-body">
             <div className="counter-grid">
                 <CounterComponent diceText="d4" incFunc={ this.incrementNumD4 } decFunc={ this.decrementNumD4 } count={this.state.numD4}/>
