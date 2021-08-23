@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
+import Chart from "react-apexcharts";
 import './DiceRollSection.css';
 
 class DiceRollSection extends Component {
     constructor() {
         super();
         this.state = {
-            rollResult: 0
+            rollResult: 0,
+            options: {
+                chart: {
+                  id: "basic-bar"
+                },
+                xaxis: {
+                  categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+                }
+              },
+              series: [
+                {
+                  name: "series-1",
+                  data: [30, 40, 45, 50, 49, 60, 70, 91]
+                }
+              ]
         };
     }
 
@@ -42,6 +57,12 @@ class DiceRollSection extends Component {
                 <button className="dice-button" onClick={this.calculateRollResult}>Roll Dice!</button>
                 <button className="dice-button">Analyze Roll</button>
                 <p>Rolled: { this.state.rollResult }</p>
+                <Chart
+                    options={this.state.options}
+                    series={this.state.series}
+                    type="bar"
+                    width="500"
+                />
             </div>
         );
     }
