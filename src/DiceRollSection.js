@@ -32,13 +32,26 @@ class DiceRollSection extends Component {
         };
     }
 
-    calculateRollResult = () => {
-        var newRollResult = this.rollDice(this.props.numD4, 4)
+    calculateRollResult = (reps) => {
+        var newRolls = Array(this.calculateRangeMaximum() - this.calculateRangeMinimum() + 1).fill(0);
+
+        var newRollResult = 0;
+
+        // Calculate the new rolls and update their frequency into a single new array
+        for (var itr = 0; itr < reps; itr++) {
+            newRollResult = this.rollDice(this.props.numD4, 4)
                             + this.rollDice(this.props.numD6, 6)
                             + this.rollDice(this.props.numD8, 8)
                             + this.rollDice(this.props.numD10, 10)
                             + this.rollDice(this.props.numD12, 12)
                             + this.rollDice(this.props.numD20, 20);
+
+            var index = (newRollResult - this.calculateRangeMinimum());
+
+            newRolls[index] += 1;
+        }
+        
+        // Update the last roll
         this.setState({
             rollResult: newRollResult
         });
@@ -60,17 +73,13 @@ class DiceRollSection extends Component {
                 prevNum20: this.props.numD20,
             });
 
+            // Create a new categories
             var newCategories = [];
-            var newData = [];
             for (var i = this.calculateRangeMinimum(); i <= this.calculateRangeMaximum(); i++) {
                 newCategories.push(i);
-                newData.push(0);
             }
 
-            var index = (newRollResult - this.calculateRangeMinimum());
-            
-            newData[index] += 1;
-
+            // Update Apex Chart state
             this.setState({
                 options: {
                     xaxis: {
@@ -79,23 +88,23 @@ class DiceRollSection extends Component {
                 },
                 series: [
                     {
-                      data: newData
+                      data: newRolls
                     }
                 ]
             })
         }
         else {
-            var newFrequency = this.state.series[0].data.slice();
-            var index = (newRollResult - this.calculateRangeMinimum());
+            var oldRolls = this.state.series[0].data.slice();
             
-            newFrequency[index] += 1;
-
-            console.log(newFrequency);
+            // Update the new Rolls
+            for (var i = 0; i < oldRolls.length; i++) {
+                newRolls[i] += oldRolls[i];
+            }
 
             this.setState({
                 series: [
                     {
-                        data: newFrequency
+                        data: newRolls
                     }
                 ]
             });
@@ -271,8 +280,8 @@ class DiceRollSection extends Component {
 
         return (
             <div className="dice-roll-section">
-                <button className="dice-button" onClick={this.calculateRollResult}>Roll Dice!</button>
-                <button className="dice-button">Analyze Roll</button>
+                <button className="dice-button" onClick={() => this.calculateRollResult(1)}>Roll Dice!</button>
+                <button className="dice-button" onClick={() => this.calculateRollResult(1000)}>Roll 1000 Times</button>
                 <p>Rolled: { this.state.rollResult }</p>
                 <Chart
                     options={this.state.options}
