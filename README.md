@@ -1,6 +1,10 @@
 
 <img width="1723" height="777" alt="Dice_roller" src="https://github.com/user-attachments/assets/e21a86f4-1682-4b9c-b05e-00d323705639" />
 
+# Description
+
+Created a website to roll various sizes of dice which can be used for tabletop games. | React, Javascript
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
